@@ -37,6 +37,7 @@ int main(int argc, const char *argv[])
 	float IntervalSampleAngle = 0, IntervalSampleAngle_LastPackage = 0;
 
 	fstream file("lidar.txt",ios::out);
+
 	while (ret)
 	{
 		valid_in_buf = 0;
@@ -182,6 +183,10 @@ int main(int argc, const char *argv[])
 				while (angle >= 360) angle -= 360;
 				
 				if ((abs(angle - prev_angle) > 100) && (angle_count > 312)) {
+					//SetRanges(laser_ranges, start);
+					/*std::cout << "scanFreq/a/pa/ac(" << scanFrequenceHz << "-" << 3000.0 / (float)raw_angle_count << "Hz,"
+						<< angle << "-" << prev_angle << "," << raw_angle_count << "-"
+						<< angle_count << ")";*/
 					raw_angle_count = 0;
 					angle_count = 0;
 					memset(laser_ranges.ranges, 0, sizeof(laser_ranges.ranges));
